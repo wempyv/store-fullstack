@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Store Dashboard</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     @stack('prepend-style')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="style/main.css" rel="stylesheet" />
+    <link href="/style/main.css" rel="stylesheet" />
     @stack('addon-style')
 </head>
 
@@ -24,7 +24,7 @@
                     <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="/dashboard.html" class="list-group-item list-group-item-action active">
+                    <a href="/dashboard.html" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
                     <a href="/dashboard-products.html" class="list-group-item list-group-item-action">
