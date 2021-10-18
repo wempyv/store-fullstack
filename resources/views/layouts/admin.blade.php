@@ -25,13 +25,14 @@
                     <img src="/images/admin.png" alt="" class="my-4" style="max-width: 80px" />
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="{{route('admin-dashboard')}}" class="list-group-item list-group-item-action">
+                    <a href="{{ route('admin-dashboard') }}" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">
                         Products
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('category.index') }}"
+                        class="list-group-item list-group-item-action {{ request()->is('admin/category*') ? 'active' : '' }}">
                         Categories
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">
@@ -92,16 +93,18 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepand-script')
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+    <script>
+        $("#datatable").DataTable();
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
