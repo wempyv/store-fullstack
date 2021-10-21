@@ -60,8 +60,8 @@
                     name: 'id'
                 },
                 {
-                    data: 'product-name',
-                    name: 'product-name'
+                    data: 'product.name',
+                    name: 'product.name'
                 },
                 {
                     data: 'photos',

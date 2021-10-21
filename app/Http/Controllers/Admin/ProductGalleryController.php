@@ -10,7 +10,6 @@ use App\Http\Requests\Admin\ProductGalleryRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\ProductGallery;
-use App\Category;
 
 class ProductGalleryController extends Controller
 {
@@ -32,10 +31,7 @@ class ProductGalleryController extends Controller
                                     Aksi
                             </button>
                             <div class="dropdown-menu" aria-labelledby="action' .  $item->id . '">
-                                <a class="dropdown-item" href="' . route('product.edit', $item->id) . '">
-                                    Sunting
-                                </a>
-                                <form action="' . route('product.destroy', $item->id) . '" method="POST">
+                                <form action="' . route('product-gallery.destroy', $item->id) . '" method="POST">
                                     ' . method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger">
                                         Hapus
@@ -46,7 +42,7 @@ class ProductGalleryController extends Controller
                 </div>';
                 })
                 ->editColumn('photos', function ($item) {
-                    return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style:"max-height:80px;" />' : '';
+                    return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style="max-height:80px;" />' : '';
                 })
                 ->rawColumns(['action', 'photos'])
                 ->make();
@@ -69,11 +65,11 @@ class ProductGalleryController extends Controller
     {
         $data = $request->all();
 
-        $data['slug'] = Str::slug($request->name);
+        $data['photos'] = $request->file('photos')->store('assets/product','public');
 
-        Product::create($data);
+        ProductGallery::create($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('product-gallery.index');
     }
 
 
@@ -94,8 +90,8 @@ class ProductGalleryController extends Controller
 
     public function destroy($id)
     {
-        $item = Product::findOrFail($id);
+        $item = ProductGallery::findOrFail($id);
         $item->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('product-gallery.index');
     }
 }
