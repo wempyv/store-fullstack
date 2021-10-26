@@ -14,8 +14,8 @@ class AddResiAndShippingStatusToTransactionDetailsTable extends Migration
     public function up()
     {
         Schema::table('transaction_details', function (Blueprint $table) {
-            $table->string('shipping_status');
-            $table->string('resi');
+            $table->string('shipping_status'); // PENDING/SHIPPING/SUCCESS
+            $table->string('resi'); 
         });
     }
 

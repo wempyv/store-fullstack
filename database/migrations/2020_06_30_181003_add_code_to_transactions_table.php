@@ -14,7 +14,7 @@ class AddCodeToTransactionsTable extends Migration
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->string('code');
+            $table->string('code'); 
         });
     }
 

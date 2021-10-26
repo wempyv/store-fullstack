@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugToProductsTable extends Migration
+class AddRolesFieldToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddSlugToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('slug');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('roles')->default('USER'); 
+                // USER (Buyer dan Seller), ADMIN (All Access) 
         });
     }
 
@@ -25,8 +26,8 @@ class AddSlugToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('slug');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('roles');
         });
     }
 }
