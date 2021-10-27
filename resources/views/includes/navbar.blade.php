@@ -43,7 +43,8 @@
                             <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
                             <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">Settings</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -51,8 +52,16 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link d-inline-block mt-2">
+                        <a href="{{route('cart')}}" class="nav-link d-inline-block mt-2">
+                            @php
+                                $carts = \App\Cart::where('users_id', Auth::user()->id)->count();
+                            @endphp
+                            @if ($carts > 0)
+                            <img src="/images/icon-cart-filled.svg" alt="" />
+                            <div class="card-badge">{{$carts}}</div>
+                            @else
                             <img src="/images/icon-cart-empty.svg" alt="" />
+                            @endif
                         </a>
                     </li>
                 </ul>

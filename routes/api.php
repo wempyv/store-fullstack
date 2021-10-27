@@ -8,3 +8,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 route::get('register/check','Auth\RegisterController@check')->name('api-register-check');
+route::get('provinces','API\LocationController@provinces')->name('api-provinces');
+route::get('regencies/{provinces_id}','API\LocationController@regencies')->name('api-regencies');
