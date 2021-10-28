@@ -29,7 +29,7 @@
                         Dashboard
                     </a>
                     <a href="{{ route('dashboard-product') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/products*') ? 'active' : '' }} ">
+                        class="list-group-item list-group-item-action {{ request()->is('dashboard-product*') ? 'active' : '' }} ">
                         My Products
                     </a>
                     <a href="{{ route('dashboard-transactions') }}"
