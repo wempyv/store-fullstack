@@ -14,8 +14,16 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('dashboard-product-store') }}" method="POST"
-                            enctype="multipart/form-data">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('dashboard-product-store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
                             <div class="card">
@@ -24,13 +32,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Product Name</label>
-                                                <input type="text" class="form-control" name="name"/>
+                                                <input type="text" class="form-control" name="name" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Price</label>
-                                                <input type="number" class="form-control" name="price"/>
+                                                <input type="number" class="form-control" name="price" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -81,5 +89,6 @@
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace("editor");
+
     </script>
 @endpush

@@ -24,7 +24,7 @@
                                 class="card card-dashboard-product d-block">
                                 <div class="card-body">
                                     <img src="{{ Storage::url($product->galleries->first()->photos) ?? '' }}" alt=""
-                                        class="w-100 mb-2 rounded" />
+                                        class="w-100 mb-2 rounded" style="height: 160px; object-fit:cover;" />
                                     <div class="product-title">{{ $product->name }}</div>
                                     <div class="product-category">{{ $product->category->name }}</div>
                                 </div>
